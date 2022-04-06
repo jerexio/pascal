@@ -18,14 +18,14 @@ VAR
         comparacion: longint;
         pivote, aux: Registro;
     BEGIN
-        pivote := A[izq-1];
+        pivote := A[(izq+der) div 2];
         i := izq-1;
         j := der-1;
         
         WHILE i<j DO
         BEGIN
             comparacion := compareText(A[i].nombre, pivote.nombre);
-            WHILE ((comparacion <= 0) AND (i<j)) DO
+            WHILE (comparacion < 0) DO
             BEGIN
                 i := succ(i);
                 comparacion := compareText(A[i].nombre, pivote.nombre);
@@ -38,22 +38,24 @@ VAR
                 comparacion := compareText(A[j].nombre, pivote.nombre);
             END;
             
-            IF i<j THEN
+            aux := A[i];
+            A[i] := A[j];
+            A[j] := aux;
+
+            comparacion := compareText(pivote.nombre, A[(izq+der) div 2].nombre);
+            IF NOT (comparacion = 0) THEN
             BEGIN
-                aux := A[i];
-                A[i] := A[j];
-                A[j] := aux;
+                pivote := A[(izq+der) div 2];
+                i := izq-1;
+                j := der-1;
             END;
         END;
 
-        A[izq-1] := A[j];
-        A[j] := pivote;
-
-        IF (j-1 < izq-1) THEN
-            ordenarRegistro(A, izq-1, j-1);
+        IF (j-1 > izq) THEN
+            ordenarRegistro(A, izq, (izq+der) div 2);
             
-        IF (j+1 < der-1) THEN
-            ordenarRegistro(A, j+1, der-1);
+        IF (i+1 < der) THEN
+            ordenarRegistro(A, (izq+der) div 2, der);
 
     END;
 
@@ -73,7 +75,7 @@ VAR
 		retorno: string;
 	BEGIN
 		medio := ((inicio+fin) div 2);
-        IF NOT((medio > fin) OR (medio < inicio)) THEN
+        IF ((medio <= fin) OR (medio >= inicio)) THEN
 		BEGIN
             comparacion := compareText(registros[medio].nombre, nombre);
             IF (comparacion > 0) THEN
@@ -86,28 +88,49 @@ VAR
 		    	    retorno := registros[medio].telefono;
                END;
            END
-           ELSE
-               retorno := 'Numero no existe';
+        ELSE
+            retorno := 'Numero no existe';
 
 
         obtenerTelefonoDe := retorno;
 	END;
 
 BEGIN
-		registroPersonas[1].nombre := 'Jere';
-		registroPersonas[1].telefono := '4321';
+    registroPersonas[1].nombre := 'Joel';
+    registroPersonas[1].telefono := '4321';
 
-		registroPersonas[2].nombre := 'xavi ';
-		registroPersonas[2].telefono := '4321';
+    registroPersonas[2].nombre := 'xavi';
+    registroPersonas[2].telefono := '4321';
 
-		registroPersonas[3].nombre := 'Agus';
-		registroPersonas[3].telefono := '123456780';
+    registroPersonas[3].nombre := 'Agus';
+    registroPersonas[3].telefono := '123456780';
 
-	ordenarRegistro(registroPersonas, 1, 3);	
-	FOR i:=1 TO 3 DO
+    registroPersonas[4].nombre := 'Jere';
+    registroPersonas[4].telefono := '43289348293841';
+
+    registroPersonas[5].nombre := 'simon';
+    registroPersonas[5].telefono := '4321';
+
+    registroPersonas[6].nombre := 'Nico';
+    registroPersonas[6].telefono := '4321';
+
+    registroPersonas[7].nombre := 'Brik';
+    registroPersonas[7].telefono := '4321';
+
+    registroPersonas[8].nombre := 'Ricky';
+    registroPersonas[8].telefono := 'ric4321';
+
+    registroPersonas[9].nombre := 'Batman';
+    registroPersonas[9].telefono := 'Batmovil';
+
+    registroPersonas[10].nombre := 'Guason';
+    registroPersonas[10].telefono := '4321';
+
+	ordenarRegistro(registroPersonas, 1, 10);	
+	FOR i:=1 TO 10 DO
 	BEGIN
 		writeln(registroPersonas[i].nombre);
 	END;
 
-   writeln(obtenerTelefonoDe('xavi', registroPersonas, 1, 3));
+   writeln(obtenerTelefonoDe('Agus', registroPersonas, 1, 10));
 END.
