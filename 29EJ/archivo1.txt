@@ -1,0 +1,10 @@
+legajo: FAI-1104, nombre: Supe, turno: 1;
+legajo: FAI-1257, nombre: Rman, turno: 1;
+legajo: FAI-1591, nombre: Sril, turno: 1;
+legajo: FAI-1624, nombre: Llex, turno: 1;
+legajo: FAI-1853, nombre: Back, turno: 1;
+legajo: FAI-1920, nombre: Than, turno: 1;
+legajo: FAI-1334, nombre: Batm, turno: 2;
+legajo: FAI-1468, nombre: Mann, turno: 2;
+legajo: FAI-1770, nombre: Flsh, turno: 2;
+legajo: FAI-2000, nombre: Nnos, turno: 2;

@@ -1,0 +1,4 @@
+legajo: FAI-1334, nombre: Batm, turno: 2;
+legajo: FAI-1468, nombre: Mann, turno: 2;
+legajo: FAI-1770, nombre: Flsh, turno: 2;
+legajo: FAI-2000, nombre: Nnos, turno: 2;
