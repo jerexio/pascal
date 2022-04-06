@@ -58,7 +58,7 @@ VAR
     END;
 
 (*
-    Le tengo mucho odio al codigo que sigue, a pesar de que yo lo hice
+    Codigo que sigue, a pesar de que yo lo hice
     Explicacion simple:
         - Tenemos: un nombre, un vector de registros, el inicio y el fin
         - Se verifica si el nombre del registro actual esta antes o despues, del nombre
@@ -83,9 +83,7 @@ VAR
 		    	IF (comparacion < 0) THEN
 		            retorno := obtenerTelefonoDe(nombre, registros, medio+1, fin)
 		    	ELSE
-                begin
 		    	    retorno := registros[medio].telefono;
-                end;
                END;
            END
            ELSE
@@ -96,14 +94,6 @@ VAR
 	END;
 
 BEGIN
-	Randomize; {Hace que cada ejecucion sea random}
-{	FOR i:=1 TO 9 DO
-	BEGIN
-		registroPersonas[i].nombre := 'jere-'+intToStr(random(1000));
-		registroPersonas[i].telefono := '4321';
-	END;
-}
-	
 		registroPersonas[1].nombre := 'Jere';
 		registroPersonas[1].telefono := '4321';
 
@@ -112,28 +102,6 @@ BEGIN
 
 		registroPersonas[3].nombre := 'Agus';
 		registroPersonas[3].telefono := '123456780';
-{
-        registroPersonas[4].nombre := 'Jere';
-        registroPersonas[4].telefono := '43289348293841';
-
-        registroPersonas[5].nombre := 'Xavi';
-        registroPersonas[5].telefono := '4321';
-
-        registroPersonas[6].nombre := 'Nico';
-        registroPersonas[6].telefono := '4321';
-
-        registroPersonas[7].nombre := 'Brik';
-        registroPersonas[7].telefono := '4321';
-
-        registroPersonas[8].nombre := 'Ricky';
-        registroPersonas[8].telefono := 'ric4321';
-
-        registroPersonas[9].nombre := 'Batman';
-        registroPersonas[9].telefono := 'Batmovil';
-
-        registroPersonas[10].nombre := 'Guason';
-        registroPersonas[10].telefono := '4321';
-}
 
 	ordenarRegistro(registroPersonas, 1, 3);	
 	FOR i:=1 TO 3 DO
